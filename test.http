@@ -41,3 +41,5 @@ Content-Type: application/json
     "codigo":"132312",
     "precio": 500
 }
+###
+GET  https://daswpi.herokuapp.com/api
