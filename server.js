@@ -23,6 +23,7 @@ app.get('/api', (req, res) => {
 
 app.post('/api/users', async function (req, res) {
     let newUser = req.body;
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, content-type,x-auth-user");
 
         // Validar si vienen las propiedades
         if(!newUser.nombre || !newUser.apellido || !newUser.correo || !newUser.sexo || !newUser.fecha || !newUser.password) {
