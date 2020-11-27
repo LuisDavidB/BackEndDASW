@@ -30,7 +30,7 @@ app.use(cors())
 
 app.get('/api', (req, res) => {
     res.statusCode=200;
-    res.send("funca");
+    //res.send("funca");
 });
 
 
