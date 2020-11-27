@@ -29,7 +29,7 @@ app.use(cors())
   });*/
 
 app.get('/api', (req, res) => {
-    res.end("funca");
+    res.send("funca");
 });
 
 
