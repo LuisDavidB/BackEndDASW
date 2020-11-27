@@ -1,4 +1,4 @@
-POST http://localhost:3000/api/users
+POST  https://daswpi.herokuapp.com/api/users
 Content-Type: application/json
 
 {
@@ -13,12 +13,12 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/api/users
+GET  https://daswpi.herokuapp.com/api/users
 x-auth-user: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiLDk3NjYXIgSiIsImlkIjoiNWZjMDcyYzY0YzMxNjMzZGUwNTZiNjBmIiwiaWF0IjoxNjA2NDQ5NzE3fQ.Vuzm5K6brhow1dcpf9mcQxMwhcR7-0HqwK3753PJ0f4
 
 ###
 
-POST http://localhost:3000/api/login
+POST  https://daswpi.herokuapp.com/api/login
 Content-Type: application/json
 
 {
@@ -28,11 +28,11 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/api/products
+GET  https://daswpi.herokuapp.com/api/products
 x-auth-user: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiLDk3NjYXIgSiIsImlkIjoiNWZjMDcyYzY0YzMxNjMzZGUwNTZiNjBmIiwiaWF0IjoxNjA2NDQ5NzE3fQ.Vuzm5K6brhow1dcpf9mcQxMwhcR7-0HqwK3753PJ0f4
 
 ###
-POST http://localhost:3000/api/products
+POST  https://daswpi.herokuapp.com/api/products
 x-auth-user: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiLDk3NjYXIgSiIsImlkIjoiNWZjMDcyYzY0YzMxNjMzZGUwNTZiNjBmIiwiaWF0IjoxNjA2NDQ5NzE3fQ.Vuzm5K6brhow1dcpf9mcQxMwhcR7-0HqwK3753PJ0f4
 Content-Type: application/json
 

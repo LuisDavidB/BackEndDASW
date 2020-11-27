@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-
+    console.log("funca");
 });
 
 
