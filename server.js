@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 app.get('/api', (req, res) => {
+    response.set('Access-Control-Allow-Origin', '*');
     res.statusCode=200;
     res.end("funca");
 });
@@ -23,8 +24,6 @@ app.get('/api', (req, res) => {
 
 app.post('/api/users', async function (req, res) {
     let newUser = req.body;
-    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, content-type,x-auth-user");
-    res.setHeader("Access-Control-Allow-Origin", "*");
 
         // Validar si vienen las propiedades
         if(!newUser.nombre || !newUser.apellido || !newUser.correo || !newUser.sexo || !newUser.fecha || !newUser.password) {
@@ -86,6 +85,7 @@ app.post('/api/login', async function (req, res) {
 app.use(authMiddleware);
 
 app.get('/api/users', (req, res) => {
+    response.set('Access-Control-Allow-Origin', '*');
     Users.find()
     .then(users => {
         res.statusCode = 200;
