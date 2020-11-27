@@ -15,8 +15,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    console.log("funca");
+app.get('/api', (req, res) => {
+    res.statusCode=200;
+    res.end("funca");
 });
 
 
