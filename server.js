@@ -16,7 +16,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.json());
 
-app.use(cors())
+var corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
 
 /*app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -28,9 +31,7 @@ app.use(cors())
     next();
   });*/
 
-app.get('/api', (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "https://daswfront.herokuapp.com/");
-    res.statusCode=200;
+app.get('/api',cors(corsOptions), (req, res) => {
     res.end("funca");
 });
 
