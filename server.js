@@ -17,7 +17,7 @@ app.use(express.json());
 
 app.use(cors())
 app.options('*', cors())
-/*app.use((req, res, next) => {
+app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Credentials", "true");
     res.setHeader("Access-Control-Max-Age", "1800");
@@ -25,7 +25,7 @@ app.options('*', cors())
     res.setHeader("Access-Control-Allow-Methods","PUT, POST, GET, DELETE, PATCH, OPTIONS");
     status_header(200);
     next();
-  });*/
+  });
 
 app.get('/api', (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "https://daswfront.herokuapp.com/");
