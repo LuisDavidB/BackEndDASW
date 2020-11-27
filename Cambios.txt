@@ -1,0 +1,5 @@
+quitar intercambio, hasta la parte de intercambiar 
+no se puede editar ni eliminar si hay solicitud
+Solo editar y borrar los propios
+Quitar parte de admin
+Quitar solicitud

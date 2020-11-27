@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Home</title>
+  </head>
+  <body background="Fondo.jpg"> 
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light" style=background-color:dimgray>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html" style="color: white;">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="Q&A.html" style="color: white;">Q&A <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Administrador
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="Consultas.html" style="color:darkgrey" >Administración de usuarios</a>
+                <a class="dropdown-item" href="Productos.html">Administracion de productos</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto" >
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="color: darkgrey;" data-toggle="modal" data-target="#ModalRegistro">Registrarse</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="color: white;" data-toggle="modal" data-target="#ModalLogin">Login</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <h2>Aqui van los productos. EJ.</h2>
+      <p></p>
+
+      <div class="row  mt-4" id="lista" >
+      <div class="media col-8 mt-2" id="modelo">
+        <div class="media-left align-self-center mr-3">
+            <img class="rounded-circle" style="width: inherit;" src="Mesa.jpg">
+        </div>
+        <div class="media-body">
+            <h4>Mesa de Madera</h4>
+            <p >Una mesa de madera 100% artesanal</p>
+            <p>5 meses de uso, sin rayones</p>
+            <p>Deso una tele chica</p>
+        </div>
+        <div class="media-right align-self-center">
+            <div class="row">
+                <a href="#" onclick="detalle('${usuarios[i].nombre},${usuarios[i].apellido},${usuarios[i].correo},${usuarios[i].fecha},${usuarios[i].sexo},${usuarios[i].url}')" class="btn btn-primary edit"><i class="fa fa-gavel  "></i></a>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+      <!--Modal Login-->
+      <div class="modal" tabindex="-1" role="dialog" id="ModalLogin">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Login</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form>
+            <div class="modal-body">
+                    <div class="form-group">
+                      <label for="formGroupCorreoInput">Correo</label>
+                      <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <div class="fa fa-user"></div> 
+                            </div>
+                          </div>
+                        <input type="email" class="form-control" id="formGroupCorreoInput" placeholder="Correo registrado" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="formGroupPasswordInput">Password</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                              <div class="fa fa-key"></div> 
+                          </div>
+                        </div>
+                        <input type="password" class="form-control" id="formGroupPasswordInput" placeholder="Contraseña registrada" required>
+                      </div>
+                    </div>     
+            </div>
+            <div class="modal-footer">
+                <div class="d-flex flex-column">
+                    <div class="p-2"> 
+                        <div class=w-100>
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary" id="BtnLog">Entrar</button>
+                            </div>
+                        </div>
+                    </div>
+                        <div><hr width="450"></div>
+                        <div class=w-100 >
+                            <div class="" ALIGN=right>
+                                <a style="font-size: small;">No tienes cuenta!</a><a href="#" data-toggle="modal" data-target="#ModalRegistro" style="font-size: small;" data-dismiss="modal"> Registrate aqui</a>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            </form>
+           </div>
+          </div>
+         </div>
+
+<!--Modal Registro-->
+         <div class="modal" tabindex="-1" role="dialog" id="ModalRegistro">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Crear cuenta</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form  oninput='up2.setCustomValidity(up2.value != up.value ? "Las contraseñas no coinciden" : "")'>
+                    
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <input type="text" class="form-control" id="NombreReg" placeholder="Nombre o Nombres"required minlength="2" maxlength="15">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input type="text" class="form-control" id="ApellidosReg" placeholder="Apellidos"required minlength="2" maxlength="20">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="EmailReg" placeholder="Tu correo"required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="passwordReg" placeholder="Contraseña"required name=up pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                        title="La contraseña debe contener por lo menos un numero, una letra minuscula y una letra mayuscula y tener por lo menos 6 caracteres.">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="password2Reg" placeholder="Confirmar contraseña"required name=up2>
+                    </div>
+                    <div class="mb-3">
+                        <input type="date" class="form-control" id="FechaReg" value="2000-01-01" min="1950-01-01" max="2050-12-31" required>
+                    </div>
+                    <div class="radioB mt-3 border">
+                      <div class="form-check">
+                          <label class="form-check-label ml-3">
+                              <input type="radio" class="form-check-input sexoF" name="sexo" id="SexoMReg" value="M"
+                                  checked>
+                              Mujer
+                          </label>
+                      </div>
+                      <div class="form-check">
+                          <label class="form-check-label ml-3">
+                              <input type="radio" class="form-check-input sexoM" name="sexo" id="" value="H">
+                              Hombre
+                          </label>
+                      </div>
+                  </div>
+                    <div class="mb-3">
+                        <input type="url" class="form-control" id="URLReg" placeholder="Url de imagen de perfil">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="BtnCancelarReg" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary" id="BtnReg" disabled >Registrarse</button>
+                </div>
+                </form>
+               </div>
+              </div>
+             </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="./request.js"></script>
+    <script src="./main_index.js"></script>
+  </body>
+</html>
+
+<!--https://www.w3schools.com/tags/att_pattern.asp-->

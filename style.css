@@ -1,0 +1,18 @@
+img{
+    border-radius: 50%;
+}
+.media{
+    border-style: ridge;
+    margin-bottom: 15px;
+    column-width: 5px;
+    max-width: 650px;
+    align-self:center;
+}
+#botones{
+    background-color: DodgerBlue; /* Blue background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    cursor: pointer; /* Mouse pointer on hover */
+    margin-bottom: .5rem;
+    margin-right: .2rem;
+}
