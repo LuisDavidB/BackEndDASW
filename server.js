@@ -16,10 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.json());
 
-var corsOptions = {
-    origin: '*',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-  }
+app.use(cors())
 
 /*app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -31,7 +28,7 @@ var corsOptions = {
     next();
   });*/
 
-app.get('/api',cors(corsOptions), (req, res) => {
+app.get('/api', (req, res) => {
     res.end("funca");
 });
 
