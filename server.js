@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 app.get('/api', (req, res) => {
-    response.set('Access-Control-Allow-Origin', '*');
+    res.setHeader("Access-Control-Allow-Origin", "*");
     res.statusCode=200;
     res.end("funca");
 });
