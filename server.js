@@ -71,8 +71,8 @@ app.post('/api/login', async function (req, res) {
             res.statusCode =400;
             res.send(err);
         } else{
-            if(bcrypt.compareSync(req.body.password, data.password)) {
-                let token = jwt.sign({nombre: data.nombre, id: data._id}, 'secret');
+            if(bcrypt.compareSync(req.body.password, result.password)) {
+                let token = jwt.sign({nombre: result.nombre, id: result._id}, 'secret');
                 res.statusCode = 200;
                 res.send(token);
             }
