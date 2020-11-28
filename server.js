@@ -139,7 +139,8 @@ app.get('/api/users/:email',function (req,res) {
       });
 });
 app.put('/api/users/:email',function (req,res) {
-    let email= req.params.email;
+    res.send();
+    /*let email= req.params.email;
     let newUser=req.body;
     let sameEmailUser = await Users.find({correo: newUser.correo});
     let sameNameUser = await Users.find({nombre: newUser.nombre, apellido: newUser.apellido});
