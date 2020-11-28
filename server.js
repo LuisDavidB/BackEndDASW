@@ -145,14 +145,22 @@ app.put('/api/users/:email',function (req,res) {
         res.send('Las propiedades requeridas son: nombre, apellido, correo, sexo, fecha y passwor');
     }
     else {
-        Users.findOne({correo:newUser.correo}, function(err, result) {
+        Users.findOne({correo:newUser.nombre}, function(err, result) {
             if (result==null){
-                res.statusCode =202;
-                res.send("no hay");
+                Users.findOneAndUpdate({correo:req.params.email},{$set:{"nombre":newUser.nombre}}, function(err, result) {
+                    if (result==null){
+                        res.statusCode =400;
+                        res.send();
+                    }
+                     else{
+                         res.statusCode=200;
+                         res.send(result);  
+                    }
+                  });
             }
              else{
                  res.statusCode=400;
-                 res.send("Ya existe un usuario con el mismo correo");  
+                 res.send("Ya existe un usuario con el mismo Nombre");  
             }
           });
         // Validar si existe un usuario con el mismo correo o nombres y apellidos
