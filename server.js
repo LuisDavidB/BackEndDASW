@@ -31,7 +31,7 @@ app.post('/api/users', async function (req, res) {
         // Validar si vienen las propiedades
         if(!newUser.nombre || !newUser.apellido || !newUser.correo || !newUser.sexo || !newUser.fecha || !newUser.password) {
             res.statusCode = 400;
-            res.send('as propiedades requeridas son: nombre, apellido, correo, sexo, fecha y passwor');
+            res.send('Las propiedades requeridas son: nombre, apellido, correo, sexo, fecha y passwor');
         }
         else {
             // Validar si existe un usuario con el mismo correo o nombres y apellidos
