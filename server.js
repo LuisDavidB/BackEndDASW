@@ -138,7 +138,32 @@ app.get('/api/users/:email',function (req,res) {
         }
       });
 });
-
+app.PUT('/api/users/:email',function (req,res) {
+    let email= req.params.email;
+    let newUser=req.body;
+    let sameEmailUser = await Users.find({correo: newUser.correo});
+    let sameNameUser = await Users.find({nombre: newUser.nombre, apellido: newUser.apellido});
+    if(sameEmailUser.length > 0) {
+        res.statusCode = 400;
+        res.send('Ya existe un usuario con el mismo correo');
+    }
+    else if(sameNameUser.length > 0) {
+        res.statusCode = 400;
+        res.send('Ya existe un usuario con el mismo nombre');
+    }
+    else {
+        Users.findOneAndUpdate({correo:req.params.email},{$set:{"nombre":newUser.nombre}}, function(err, result) {
+            if (result==null){
+                res.statusCode =400;
+                res.send();
+            }
+             else{
+                 res.statusCode=200;
+                 res.send(result);  
+            }
+          });
+    }
+});
 
 
 
