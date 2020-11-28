@@ -69,14 +69,17 @@ app.post('/api/login', async function (req, res) {
     Users.findOne({correo:req.body.correo}, function(err, result) {
         if (result==null){
             res.statusCode =400;
-            res.send();
+            res.end();
         }
          else{
             if(bcrypt.compareSync(req.body.password, result.password)) {
                 let token = jwt.sign({nombre: result.nombre, id: result._id}, 'secret');
                 res.statusCode = 200;
                 res.send(token);
-            }
+            }else {
+                res.statusCode = 400;
+                res.end();
+            }   
         }
       });
     /*Users.findOne({correo: req.body.correo}, (err, data) => {
