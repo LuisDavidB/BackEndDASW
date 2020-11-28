@@ -145,6 +145,7 @@ app.put('/api/users/:email',function (req,res) {
         res.statusCode = 400;
         res.send('Las propiedades requeridas son: nombre, apellido, correo, sexo, fecha y passwor');
     }
+    let sameEmailUser = await Users.find({correo: newUser.correo});
     else {
         Users.findOne({nombre:newUser.nombre}, function(err, result) {
             if (result==null){
