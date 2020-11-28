@@ -11,6 +11,7 @@ const jwt = require('jsonwebtoken');
 const Users = require('./db/users');
 const  Products = require('./db/products');
 const bcrypt = require('bcrypt');
+const { error } = require('console');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -147,9 +148,16 @@ app.put('/api/users/:email',function (req,res) {
     else {
         Users.findOne({nombre:newUser.nombre}, function(err, result) {
             if (result==null){
-                Users.findOneAndUpdate({correo:req.params.email},{$set:{nombre:newUser.nombre}})
-                  res.statusCode=202;
-                  res.send("Editado")
+                Users.findOneAndUpdate({correo:req.params.email},{$set:{nombre:newUser.nombre}},{new:true},function(err, result){
+                    if (result==null){
+                        res.statusCode =400;
+                        res.send("No se ha podido editar");
+                    }
+                     else{
+                         res.statusCode=200;
+                         res.send(result);  
+                    }  
+                })
             }
              else{
                  res.statusCode=400;
