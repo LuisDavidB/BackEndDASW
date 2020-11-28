@@ -150,7 +150,7 @@ app.put('/api/users/:email', async function (req,res) {
     }
     else {
             if (sameEmailUser.length<=1 && sameNameUser.length<=1){
-                Users.findOneAndUpdate({correo:req.params.email},{$set:{nombre:newUser.nombre, fecha:newUser.fecha , url:newUser.url,password:newUser.password}},{new:true},function(err, result){
+                Users.findOneAndUpdate({correo:req.params.email},{$set:{nombre:newUser.nombre, fecha:newUser.fecha , url:newUser.url,password:newUser.password,apellido:newUser.apellido}},{new:true},function(err, result){
                     if (result==null){
                         res.statusCode =400;
                         res.send("No se ha podido editar");
