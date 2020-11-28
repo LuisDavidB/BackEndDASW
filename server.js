@@ -141,17 +141,24 @@ app.get('/api/users/:email',function (req,res) {
 app.put('/api/users/:email',function (req,res) {
     let newUser=req.body;
     res.send(newUser);
-    /*let sameEmailUser = await Users.find({correo: newUser.correo});
-    let sameNameUser = await Users.find({nombre: newUser.nombre, apellido: newUser.apellido});
-    if(sameEmailUser.length > 0) {
+    if(!newUser.nombre || !newUser.apellido || !newUser.correo || !newUser.sexo || !newUser.fecha || !newUser.password) {
         res.statusCode = 400;
-        res.send('Ya existe un usuario con el mismo correo');
+        res.send('Las propiedades requeridas son: nombre, apellido, correo, sexo, fecha y passwor');
     }
-    else if(sameNameUser.length > 0) {
-        res.statusCode = 400;
-        res.send('Ya existe un usuario con el mismo nombre');
-    }
-    /*else {
+    else {
+        // Validar si existe un usuario con el mismo correo o nombres y apellidos
+        let sameEmailUser = await Users.find({correo: newUser.correo});
+        let sameNameUser = await Users.find({nombre: newUser.nombre, apellido: newUser.apellido});
+
+        if(sameEmailUser.length > 0) {
+            res.statusCode = 400;
+            res.send('Ya existe un usuario con el mismo correo');
+        }
+        else if(sameNameUser.length > 0) {
+            res.statusCode = 400;
+            res.send('Ya existe un usuario con el mismo nombre');
+        }
+        else {
         Users.findOneAndUpdate({correo:req.params.email},{$set:{"nombre":newUser.nombre}}, function(err, result) {
             if (result==null){
                 res.statusCode =400;
@@ -162,7 +169,8 @@ app.put('/api/users/:email',function (req,res) {
                  res.send(result);  
             }
           });
-    }*/
+    }
+}
 });
 
 
