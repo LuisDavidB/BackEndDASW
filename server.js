@@ -119,6 +119,10 @@ app.post('/api/products',(req,res)=>{
         .then(product=>{
             res.statusCode =201;
             res.send(product);
+        })
+        .catch(reason=>{
+            res.statusCode=500;
+            res.end();
         });
 });
 
