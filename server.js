@@ -151,7 +151,7 @@ app.put('/api/users/:email',function (req,res) {
         res.statusCode = 400;
         res.send('Ya existe un usuario con el mismo nombre');
     }
-    else {
+    /*else {
         Users.findOneAndUpdate({correo:req.params.email},{$set:{"nombre":newUser.nombre}}, function(err, result) {
             if (result==null){
                 res.statusCode =400;
@@ -162,7 +162,7 @@ app.put('/api/users/:email',function (req,res) {
                  res.send(result);  
             }
           });
-    }
+    }*/
 });
 
 
