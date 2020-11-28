@@ -141,7 +141,7 @@ app.get('/api/users/:email',function (req,res) {
 app.put('/api/users/:email',function (req,res) {
     let newUser=req.body;
     res.send(newUser);
-    if(!newUser.nombre || !newUser.apellido || !newUser.correo || !newUser.sexo || !newUser.fecha || !newUser.password) {
+    /*if(!newUser.nombre || !newUser.apellido || !newUser.correo || !newUser.sexo || !newUser.fecha || !newUser.password) {
         res.statusCode = 400;
         res.send('Las propiedades requeridas son: nombre, apellido, correo, sexo, fecha y passwor');
     }
@@ -170,7 +170,7 @@ app.put('/api/users/:email',function (req,res) {
             }
           });
     }
-}
+}*/
 });
 
 
