@@ -142,14 +142,15 @@ app.get('/api/users/:email',function (req,res) {
 app.put('/api/users/:email', async function (req,res) {
     let newUser=req.body;
     let sameEmailUser = await Users.find({correo: newUser.correo});
+    let sameNameUser = await Users.find({nombre: newUser.nombre, apellido: newUser.apellido});
+    newUser.password = bcrypt.hashSync(newUser.password, 10);
     if(!newUser.nombre || !newUser.apellido || !newUser.correo || !newUser.sexo || !newUser.fecha || !newUser.password) {
         res.statusCode = 400;
         res.send('Las propiedades requeridas son: nombre, apellido, correo, sexo, fecha y passwor');
     }
     else {
-        Users.findOne({nombre:newUser.nombre}, function(err, result) {
-            if (result==null){
-                Users.findOneAndUpdate({correo:req.params.email},{$set:{nombre:newUser.nombre}},{new:true},function(err, result){
+            if (sameEmailUser.length<1 && sameNameUser.length<1){
+                Users.findOneAndUpdate({correo:req.params.email},{$set:{nombre:newUser.nombre, fecha:newUser.fecha , url:newUser.url,password:newUser.password}},{new:true},function(err, result){
                     if (result==null){
                         res.statusCode =400;
                         res.send("No se ha podido editar");
@@ -164,7 +165,6 @@ app.put('/api/users/:email', async function (req,res) {
                  res.statusCode=400;
                  res.send("Ya existe un usuario con el mismo Nombre");  
             }
-          });
         // Validar si existe un usuario con el mismo correo o nombres y apellidos
         /*let sameEmailUser = Users.find({correo: newUser.correo});
         let sameNameUser = Users.find({nombre: newUser.nombre});
