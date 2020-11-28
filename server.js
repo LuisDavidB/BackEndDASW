@@ -126,6 +126,7 @@ app.post('/api/products',(req,res)=>{
 });
 
 app.get('/api/users/:email'),(req,res)=>{
+    let email= req.params.email;
     Users.findOne({correo:req.params.email}, function(err, result) {
         if (result==null){
             res.statusCode =400;
