@@ -82,23 +82,6 @@ app.post('/api/login', async function (req, res) {
             }   
         }
       });
-    /*Users.findOne({correo: req.body.correo}, (err, data) => {
-        if(err) {
-            res.statusCode = 400;
-            res.end();
-        }
-        else {
-            if(bcrypt.compareSync(req.body.password, data.password)) {
-                let token = jwt.sign({nombre: data.nombre, id: data._id}, 'secret');
-                res.statusCode = 200;
-                res.end(token);
-            }
-            else {
-                res.statusCode = 400;
-                res.end();
-            }            
-        }
-    })*/
 });
 
 app.use(authMiddleware);
@@ -142,6 +125,18 @@ app.post('/api/products',(req,res)=>{
         });
 });
 
+app.get('/api/users/:email'),(req,res)=>{
+    Users.findOne({correo:req.params.email}, function(err, result) {
+        if (result==null){
+            res.statusCode =400;
+            res.send();
+        }
+         else{
+             res.statusCode=200;
+             res.send(result);  
+        }
+      });
+}
 
 
 
