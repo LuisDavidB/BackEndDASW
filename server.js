@@ -175,7 +175,7 @@ app.delete('/api/users/:email', function (req,res) {
         }
          else{
              res.statusCode=200;
-             res.send("Usuario eliminado" + result);  
+             res.send(`Usuario eliminado  ${result}`);  
         } 
     });
 });
