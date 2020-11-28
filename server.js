@@ -148,16 +148,14 @@ app.put('/api/users/:email',function (req,res) {
         // Validar si existe un usuario con el mismo correo o nombres y apellidos
         let sameEmailUser = Users.find({correo: newUser.correo});
         let sameNameUser = Users.find({nombre: newUser.nombre});
-        res.statusCode=202;
-        res.send("funca");
-        /*if(sameEmailUser.length > 0) {
+        if(sameEmailUser.length > 0) {
             res.statusCode = 400;
             res.send('Ya existe un usuario con el mismo correo');
         }
         else if(sameNameUser.length > 0) {
             res.statusCode = 400;
             res.send('Ya existe un usuario con el mismo nombre');
-        }
+        }/*
         else {
         Users.findOneAndUpdate({correo:req.params.email},{$set:{"nombre":newUser.nombre}}, function(err, result) {
             if (result==null){
