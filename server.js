@@ -21,8 +21,7 @@ app.use(cors())
 
 app.get('/api', (req, res) => {
     res.statusCode=200;
-    res.send("");
-    console.log("funciona");
+    res.send();
 });
 
 
