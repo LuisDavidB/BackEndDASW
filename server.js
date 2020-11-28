@@ -147,7 +147,7 @@ app.put('/api/users/:email',function (req,res) {
     else {
         Users.findOne({nombre:newUser.nombre}, function(err, result) {
             if (result==null){
-                Users.findOneAndUpdate({correo:req.params.email},{$set:{"nombre":newUser.nombre}})
+                Users.findOneAndUpdate({correo:req.params.email},{$set:{nombre:newUser.nombre}})
                   res.statusCode=202;
                   res.send("Editado")
             }
