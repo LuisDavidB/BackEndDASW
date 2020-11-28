@@ -66,7 +66,9 @@ app.post('/api/users', async function (req, res) {
 
 app.post('/api/login', async function (req, res) {
     // Programar aquí lógica de token
-    Users.findOne({correo: req.body.correo}, (err, data) => {
+    let usuariologin=Users.findOne({correo: req.body.correo};
+    res.send(usuariologin);
+    /*Users.findOne({correo: req.body.correo}, (err, data) => {
         if(err) {
             res.statusCode = 400;
             res.end();
@@ -82,7 +84,7 @@ app.post('/api/login', async function (req, res) {
                 res.end();
             }            
         }
-    })
+    })*/
 });
 
 app.use(authMiddleware);
