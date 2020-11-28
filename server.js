@@ -147,7 +147,7 @@ app.put('/api/users/:email',function (req,res) {
     else {
         Users.findOne({correo:newUser.nombre}, function(err, result) {
             if (result==null){
-                Users.findOneAndUpdate({correo:req.params.email},{$set:{"nombre":newUser.nombre}}, function(err, result) {
+                /*Users.findOneAndUpdate({correo:req.params.email},{$set:{"nombre":newUser.nombre}}, function(err, result) {
                     if (result==null){
                         res.statusCode =400;
                         res.send();
@@ -156,7 +156,9 @@ app.put('/api/users/:email',function (req,res) {
                          res.statusCode=200;
                          res.send(result);  
                     }
-                  });
+                  });*/
+                  res.statusCode=202;
+                  res.send("no hay")
             }
              else{
                  res.statusCode=400;
