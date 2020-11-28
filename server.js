@@ -141,7 +141,6 @@ app.get('/api/users/:email',function (req,res) {
 });
 app.put('/api/users/:email', async function (req,res) {
     let newUser=req.body;
-    let sameEmailUser = await Users.find({correo: newUser.correo});
     let sameNameUser = await Users.find({nombre: newUser.nombre, apellido: newUser.apellido});
     newUser.password = bcrypt.hashSync(newUser.password, 10);
     if(!newUser.nombre || !newUser.apellido || !newUser.correo || !newUser.sexo || !newUser.fecha || !newUser.password) {
@@ -149,7 +148,7 @@ app.put('/api/users/:email', async function (req,res) {
         res.send('Las propiedades requeridas son: nombre, apellido, correo, sexo, fecha y passwor');
     }
     else {
-            if (sameEmailUser.length<=1 && sameNameUser.length<=1){
+            if (sameNameUser.length<=1){
                 Users.findOneAndUpdate({correo:req.params.email},{$set:{nombre:newUser.nombre, fecha:newUser.fecha , url:newUser.url,password:newUser.password,apellido:newUser.apellido}},{new:true},function(err, result){
                     if (result==null){
                         res.statusCode =400;
