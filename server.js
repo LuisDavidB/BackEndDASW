@@ -139,12 +139,12 @@ app.get('/api/users/:email',function (req,res) {
         }
       });
 });
-app.put('/api/users/:email',function (req,res) {
+app.put('/api/users/:email', async function (req,res) {
     let newUser=req.body;
+    let sameEmailUser = await Users.find({correo: newUser.correo});
     if(!newUser.nombre || !newUser.apellido || !newUser.correo || !newUser.sexo || !newUser.fecha || !newUser.password) {
         res.statusCode = 400;
         res.send('Las propiedades requeridas son: nombre, apellido, correo, sexo, fecha y passwor');
-        let sameEmailUser = await Users.find({correo: newUser.correo});
     }
     else {
         Users.findOne({nombre:newUser.nombre}, function(err, result) {
