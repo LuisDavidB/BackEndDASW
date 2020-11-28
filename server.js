@@ -140,6 +140,7 @@ app.get('/api/users/:email',function (req,res) {
 });
 app.put('/api/users/:email',function (req,res) {
     let newUser=req.body;
+    res.statusCode=202;
     res.send(newUser.correo);
     /*if(!newUser.nombre || !newUser.apellido || !newUser.correo || !newUser.sexo || !newUser.fecha || !newUser.password) {
         res.statusCode = 400;
