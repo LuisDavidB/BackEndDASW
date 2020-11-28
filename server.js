@@ -69,7 +69,7 @@ app.post('/api/login', async function (req, res) {
     Users.findOne({correo:req.body.correo}, function(err, result) {
         if (result==null){
             res.statusCode =400;
-            res.end();
+            res.send("Correo o contraseña incorrecta");
         }
          else{
             if(bcrypt.compareSync(req.body.password, result.password)) {
