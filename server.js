@@ -67,7 +67,7 @@ app.post('/api/users', async function (req, res) {
 app.post('/api/login', async function (req, res) {
     // Programar aquí lógica de token
     Users.findOne({correo:req.body.correo}, function(err, result) {
-        if (result==""){
+        if (result==null){
             console.log(err);
             res.statusCode =400;
             res.send(err);
