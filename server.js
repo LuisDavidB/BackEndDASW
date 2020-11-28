@@ -149,7 +149,7 @@ app.put('/api/users/:email', async function (req,res) {
         res.send('Las propiedades requeridas son: nombre, apellido, correo, sexo, fecha y passwor');
     }
     else {
-            if (sameEmailUser.length<1 && sameNameUser.length<1){
+            if (sameEmailUser.length<=1 && sameNameUser.length<=1){
                 Users.findOneAndUpdate({correo:req.params.email},{$set:{nombre:newUser.nombre, fecha:newUser.fecha , url:newUser.url,password:newUser.password}},{new:true},function(err, result){
                     if (result==null){
                         res.statusCode =400;
