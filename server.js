@@ -68,10 +68,15 @@ app.post('/api/login', async function (req, res) {
     // Programar aquí lógica de token
     Users.findOne({correo:req.body.correo}, function(err, result) {
         if (err){
-            res.statusCode =500;
+            res.statusCode =400;
             res.send(err);
-        } 
-        res.send(result);
+        } else{
+            if(bcrypt.compareSync(req.body.password, data.password)) {
+                let token = jwt.sign({nombre: data.nombre, id: data._id}, 'secret');
+                res.statusCode = 200;
+                res.send(token);
+            }
+        }
       });
     /*Users.findOne({correo: req.body.correo}, (err, data) => {
         if(err) {
