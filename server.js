@@ -164,32 +164,20 @@ app.put('/api/users/:email', async function (req,res) {
                  res.statusCode=400;
                  res.send("Ya existe un usuario con el mismo Nombre");  
             }
-        // Validar si existe un usuario con el mismo correo o nombres y apellidos
-        /*let sameEmailUser = Users.find({correo: newUser.correo});
-        let sameNameUser = Users.find({nombre: newUser.nombre});
-        res.statusCode=202;
-        res.send(sameEmailUser.length);
-        if(sameEmailUser.length > 0) {
-            res.statusCode = 400;
-            res.send('Ya existe un usuario con el mismo correo');
-        }
-        else if(sameNameUser.length > 0) {
-            res.statusCode = 400;
-            res.send('Ya existe un usuario con el mismo nombre');
-        }/*
-        else {
-        Users.findOneAndUpdate({correo:req.params.email},{$set:{"nombre":newUser.nombre}}, function(err, result) {
-            if (result==null){
-                res.statusCode =400;
-                res.send();
-            }
-             else{
-                 res.statusCode=200;
-                 res.send(result);  
-            }
-          });
-    }*/
 }
+});
+
+app.delete('/api/users/:email', function (req,res) {
+    Users.findOneAndDelete({correo:req.params.email}, function(err, result) {
+        if (result==null){
+            res.statusCode =400;
+            res.send("No existe el usuario");
+        }
+         else{
+             res.statusCode=200;
+             res.send("Usuario eliminado" + result);  
+        } 
+    });
 });
 
 
