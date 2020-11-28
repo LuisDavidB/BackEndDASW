@@ -125,7 +125,7 @@ app.post('/api/products',(req,res)=>{
         });
 });
 
-app.get('/api/users/:email'),(req,res)=>{
+app.get('/api/users/:email',function (req,res) {
     let email= req.params.email;
     Users.findOne({correo:req.params.email}, function(err, result) {
         if (result==null){
@@ -137,7 +137,7 @@ app.get('/api/users/:email'),(req,res)=>{
              res.send(result);  
         }
       });
-}
+});
 
 
 
