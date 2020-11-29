@@ -184,7 +184,7 @@ app.delete('/api/products/:id',(req,res)=>{
 });
 
 app.put('/api/products/ofertar/:id',async function (req,res){
-    let idusuario=req.body;
+    //let idusuario=req.body;
     id=req.params.id;
     res.send(idusuario + " " + req.user_id);
     /*if (idusuario==req.user_id){
