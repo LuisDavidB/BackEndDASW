@@ -75,7 +75,7 @@ app.post('/api/login', async function (req, res) {
         }
          else{
             if(bcrypt.compareSync(req.body.password, result.password)) {
-                let token = jwt.sign({nombre: result.nombre, id: result._id,apellido:result.apellido}, 'secret');
+                let token = jwt.sign({nombre: result.nombre, id: result._id}, 'secret');
                 res.statusCode = 202;
                 res.send(token);
             }else {
@@ -116,7 +116,14 @@ app.get('/api/products', (req, res) => {
 app.post('/api/products',(req,res)=>{
     req.body.user_id = req.user_id;
     req.body.user_nombre=req.user_nombre;
-    req.body.user_apellido=req.user_apellido;
+    Users.findById(id,function(err, result) {
+        if (result==null){
+            res.statusCode =400;
+            res.send("Error de usuario");
+        }else{
+            req.body.user_apellido=result.apellido
+        }
+    });
     let newProduct = Products(req.body);
     newProduct.save()
         .then(product=>{
@@ -269,7 +276,6 @@ async function authMiddleware(req, res, next) {
             else {
                 req.user_nombre = decoded.nombre;
                 req.user_id = decoded.id;
-                req.user_apellido = decoded.apellido
                 next();
             }
         });        
