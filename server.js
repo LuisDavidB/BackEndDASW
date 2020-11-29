@@ -210,9 +210,7 @@ app.put('/api/preguntas/:id', function (req,res){
     let newpregunta=req.body;
     id=req.params.id;
     pregunta2=newpregunta.pregunta
-    res.statusCode=202;
-    res.send(req.params.id);
-    /*Preguntas.findByIdAndUpdate(id,pregunta2,{new:true},function(err, result){
+    Preguntas.findByIdAndUpdate(id,{pregunta:newpregunta.pregunta,respuesta:newpregunta.respuesta},{new:true},function(err, result){
         if (result==null){
             res.statusCode =400;
             res.send("No se ha podido editar");
@@ -221,7 +219,7 @@ app.put('/api/preguntas/:id', function (req,res){
              res.statusCode=200;
              res.send(result);  
         }  
-    }) */
+    })
 });
 
 app.delete('/api/preguntas/:id',function (req,res){
