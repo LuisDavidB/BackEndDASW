@@ -117,7 +117,7 @@ app.post('/api/products',async function (req,res){
     req.body.user_id = req.user_id;
     req.body.user_nombre=req.user_nombre;
     
-    let usuario = await Users.findById(id);
+    let usuario = await Users.findById(req.user_id);
     console.log(usuario);
     /*Users.findById(req.user_id,function(err, result) {
         if (result==null){
