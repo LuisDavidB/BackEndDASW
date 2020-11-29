@@ -124,7 +124,7 @@ app.post('/api/products',async function (req,res){
         }else{
             req.body.user_apellido=ape;
             let newProduct = Products(req.body);
-            res.send(ape);
+            res.send(result.apellido);
             /*newProduct.save()
                 .then(product=>{
                     res.statusCode =201;
