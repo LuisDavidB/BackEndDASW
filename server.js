@@ -209,7 +209,6 @@ app.post('/api/preguntas',function (req,res){
 app.put('/api/preguntas/:id', function (req,res){
     let newpregunta=req.body;
     id=req.params.id;
-    pregunta2=newpregunta.pregunta
     Preguntas.findByIdAndUpdate(id,{pregunta:newpregunta.pregunta,respuesta:newpregunta.respuesta},{new:true},function(err, result){
         if (result==null){
             res.statusCode =400;
@@ -223,10 +222,11 @@ app.put('/api/preguntas/:id', function (req,res){
 });
 
 app.delete('/api/preguntas/:id',function (req,res){
-    Preguntas.findOneAndDelete({_id:req.params.id}, function(err, result) {
+    id=req.params.id;
+    Preguntas.findByIdAndDelete(id,function(err, result){
         if (result==null){
             res.statusCode =400;
-            res.send("No existe la pregunta");
+            res.send(id);
         }
          else{
              res.statusCode=202;
