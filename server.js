@@ -116,8 +116,10 @@ app.get('/api/products', (req, res) => {
 app.post('/api/products',async function (req,res){
     req.body.user_id = req.user_id;
     req.body.user_nombre=req.user_nombre;
-    let ape;
-    Users.findById(req.user_id,function(err, result) {
+    
+    let usuario = await Users.findById(id);
+    console.log(usuario);
+    /*Users.findById(req.user_id,function(err, result) {
         if (result==null){
             res.statusCode =400;
             res.send("Error de usuario");
