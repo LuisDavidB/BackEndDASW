@@ -113,6 +113,20 @@ app.get('/api/products', (req, res) => {
     });
 });
 
+app.get('/api/products/:id',function (req,res) {
+    let id= req.params.id;
+    Products.findById(id, function(err, result) {
+        if (result==null){
+            res.statusCode =400;
+            res.send();
+        }
+         else{
+             res.statusCode=200;
+             res.send(result);  
+        }
+      });
+});
+
 app.post('/api/products',async function (req,res){
     req.body.user_id = req.user_id;
     req.body.user_nombre=req.user_nombre;
