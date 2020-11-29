@@ -186,8 +186,8 @@ app.delete('/api/products/:id',(req,res)=>{
 app.put('/api/products/ofertar/:id',async function (req,res){
     let idusuario=req.body;
     id=req.params.id;
-    //res.send(idusuario + " " + req.user_id);
-    if (idusuario==req.user_id){
+    res.send(idusuario + " " + req.user_id);
+    /*if (idusuario==req.user_id){
         res.statusCode=400;
         res.send("No pudes ofertar por tu articulo");
     }else {
@@ -210,7 +210,7 @@ app.put('/api/products/ofertar/:id',async function (req,res){
                 });
             }
         });
-    }
+    }*/
 });
 
 app.get('/api/users/:email',function (req,res) {
