@@ -181,8 +181,10 @@ app.delete('/api/users/:email', function (req,res) {
     });
 });
 
-app.post('/api/preguntas',function (req,res){
-    let newQuestion = Preguntas(req.body);
+app.get('/api/preguntas',function (req,res){
+    res.statusCode=202;
+    res.send("hola")
+    /*let newQuestion = Preguntas(req.body);
     newQuestion.save()
         .then(question=>{
             res.statusCode =201;
@@ -191,7 +193,7 @@ app.post('/api/preguntas',function (req,res){
         .catch(reason=>{
             res.statusCode=500;
             res.end();
-        });
+        });*/
 });
 
 
