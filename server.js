@@ -132,7 +132,7 @@ app.post('/api/products',async function (req,res){
         })
         .catch(reason=>{
             res.statusCode=500;
-            res.end();
+            res.send("no funca");
         });
 });
 app.put('/api/products:',(req,res)=>{
