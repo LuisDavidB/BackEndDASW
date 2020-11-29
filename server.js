@@ -182,7 +182,7 @@ app.delete('/api/users/:email', function (req,res) {
 });
 
 app.get('/api/preguntas',function (req,res){
-    Products.find()
+    Preguntas.find()
     .then(products => {
         res.statusCode = 200;
         res.send(products);
