@@ -111,6 +111,7 @@ app.get('/api/products/:id',function (req,res) {
         }
       });
 });
+
 app.get('/api/preguntas',function (req,res){
     Preguntas.find()
     .then(questions => {
@@ -138,6 +139,17 @@ app.get('/api/users', (req, res) => {
     });
 });
 
+app.get('/api/products/admin', (req, res) => {
+    Products.find()
+    .then(products => {
+        res.statusCode = 200;
+        res.send(products);
+    })
+    .catch(reason => {
+        res.statusCode = 500;
+        res.end();
+    });
+});
 
 app.post('/api/products',async function (req,res){
     req.body.user_id = req.user_id;
@@ -318,6 +330,19 @@ app.delete('/api/preguntas/:id',function (req,res){
              res.statusCode=202;
              res.send(`Pregunta eliminada  ${result}`);  
         } 
+    });
+});
+
+
+app.get('/api/misproducts', (req, res) => {
+    Products.find({user_id:req.user_id}, function (err,result){
+        if (result==null){
+            res.statusCode=202;
+            res.send("No hay productos")      
+        }else {
+            res.statusCode=200;
+            res.send(result);
+        }
     });
 });
 
