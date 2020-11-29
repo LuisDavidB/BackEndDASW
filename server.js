@@ -208,7 +208,7 @@ app.post('/api/preguntas',function (req,res){
 
 app.put('/api/preguntas/:id',function (req,res){
     let newpregunta=req.body;
-    Preguntas.findOneAndUpdate({correo:req.params.id},{$set:{pregunta:newpregunta.pregunta, respuesta:newpregunta.respuesta}},{new:true},function(err, result){
+    Preguntas.findOneAndUpdate({_id:req.params.id},{$set:{pregunta:newpregunta.pregunta, respuesta:newpregunta.respuesta}},{new:true},function(err, result){
         if (result==null){
             res.statusCode =400;
             res.send("No se ha podido editar");
@@ -221,7 +221,7 @@ app.put('/api/preguntas/:id',function (req,res){
 });
 
 app.delete('/api/preguntas/:id',function (req,res){
-    Users.findOneAndDelete({correo:req.params.id}, function(err, result) {
+    Preguntas.findOneAndDelete({_id:req.params.id}, function(err, result) {
         if (result==null){
             res.statusCode =400;
             res.send("No existe la pregunta");
