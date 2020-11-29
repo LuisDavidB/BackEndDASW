@@ -137,6 +137,7 @@ app.post('/api/products',async function (req,res){
             res.send("Error de usuario");
         }else{
             req.body.user_apellido=result.apellido;
+            req.body.ofertador="";
             let newProduct = Products(req.body);
             newProduct.save()
                 .then(product=>{
