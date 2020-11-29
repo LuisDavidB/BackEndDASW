@@ -116,31 +116,25 @@ app.get('/api/products', (req, res) => {
 app.post('/api/products',async function (req,res){
     req.body.user_id = req.user_id;
     req.body.user_nombre=req.user_nombre;
-    
-    let usuario = await Users.findById(req.user_id);
-    console.log(usuario);
-    /*Users.findById(req.user_id,function(err, result) {
+    let ape;
+    Users.findById(req.user_id,function(err, result) {
         if (result==null){
             res.statusCode =400;
             res.send("Error de usuario");
         }else{
-            ape=result.apellido
-            res.send(ape);
+            req.body.user_apellido=ape;
+            let newProduct = Products(req.body);
+            newProduct.save()
+                .then(product=>{
+                    res.statusCode =201;
+                    res.send(product);
+                })
+                .catch(reason=>{
+                    res.statusCode=500;
+                    res.send();
+                });
         }
     });
-    /*req.body.user_apellido=ape;
-    res.send(ape);
-    let newProduct = Products(req.body);
-   // res.send(newProduct);
-    /*newProduct.save()
-        .then(product=>{
-            res.statusCode =201;
-            res.send(product);
-        })
-        .catch(reason=>{
-            res.statusCode=500;
-            res.send();
-        });*/
 });
 app.put('/api/products:',(req,res)=>{
 
