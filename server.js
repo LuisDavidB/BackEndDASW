@@ -125,15 +125,16 @@ app.post('/api/products',async function (req,res){
         }
     });
     let newProduct = Products(req.body);
-    newProduct.save()
+    res.send(newProduct);
+    /*newProduct.save()
         .then(product=>{
             res.statusCode =201;
             res.send(product);
         })
         .catch(reason=>{
             res.statusCode=500;
-            res.send("no funca");
-        });
+            res.send();
+        });*/
 });
 app.put('/api/products:',(req,res)=>{
 
