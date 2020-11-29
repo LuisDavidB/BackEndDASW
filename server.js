@@ -206,7 +206,7 @@ app.post('/api/preguntas',function (req,res){
     })
 });
 
-app.put('/api/preguntas/:id',function (req,res){
+app.put('/api/preguntas/:id',async function (req,res){
     let newpregunta=req.body;
     console.log(req.params.id);
     Preguntas.findOneAndUpdate({_id:req.params.id},{$set:{pregunta:newpregunta.pregunta, respuesta:newpregunta.respuesta}},{new:true},function(err, result){
