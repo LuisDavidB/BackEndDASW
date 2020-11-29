@@ -111,6 +111,17 @@ app.get('/api/products/:id',function (req,res) {
         }
       });
 });
+app.get('/api/preguntas',function (req,res){
+    Preguntas.find()
+    .then(questions => {
+        res.statusCode = 200;
+        res.send(questions);
+    })
+    .catch(reason => {
+        res.statusCode = 500;
+        res.send("No se pudo obtener las preguntas");
+    });
+});
 
 app.use(authMiddleware);
 
@@ -265,17 +276,7 @@ app.delete('/api/users/:email', function (req,res) {
         } 
     });
 });
-app.get('/api/preguntas',function (req,res){
-    Preguntas.find()
-    .then(questions => {
-        res.statusCode = 200;
-        res.send(questions);
-    })
-    .catch(reason => {
-        res.statusCode = 500;
-        res.send("No se pudo obtener las preguntas");
-    });
-});
+
 
 app.post('/api/preguntas',function (req,res){
     let newpregunta =req.body;
