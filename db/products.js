@@ -20,6 +20,10 @@ let productsSchema = mongoose.Schema({
     user_nombre:{
         type:String,
         required:true
+    },
+    user_apellido:{
+        type:String,
+        required:true
     }
 });
 
