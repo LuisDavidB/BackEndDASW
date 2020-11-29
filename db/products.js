@@ -5,12 +5,28 @@ let productsSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    codigo: {
+    condicion: {
+        type: String,
+        required: true
+    },
+    uso: {
         type: String,
         required: true
     },
     precio: {
         type: Number,
+        required: true
+    },
+    producto: {
+        type: String,
+        required: true
+    },
+    descripcion: {
+        type: String,
+        required: true
+    },
+    url: {
+        type: String,
         required: true
     },
     user_id:{
@@ -22,6 +38,10 @@ let productsSchema = mongoose.Schema({
         required:true
     },
     user_apellido:{
+        type:String,
+        required:true
+    },
+    ofertador:{
         type:String,
         required:true
     }

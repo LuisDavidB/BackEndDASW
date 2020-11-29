@@ -136,12 +136,57 @@ app.post('/api/products',async function (req,res){
         }
     });
 });
-app.put('/api/products:',(req,res)=>{
-
+app.put('/api/products/:id',(req,res)=>{
+    let newProduct=req.body;
+    id=req.params.id;
+    Products.findByIdAndUpdate(id,{nombre:newProduct.nombre,condicion:newProduct.condicion,uso:newProduct.uso,
+        precio:newProduct.precio,producto:newProduct.producto,descripcion:newProduct.descripcion,url:newProduct.url},
+        {new:true},function(err, result){
+        if (result==null){
+            res.statusCode =400;
+            res.send("No se ha podido editar");
+        }
+         else{
+             res.statusCode=200;
+             res.send(result);  
+        }  
+    });
 });
 
-app.delete('/api/products',(req,res)=>{
+app.delete('/api/products/:id',(req,res)=>{
+    id=req.params.id;
+    Products.findByIdAndDelete(id,function(err, result){
+        if (result==null){
+            res.statusCode =400;
+            res.send(id);
+        }
+         else{
+             res.statusCode=202;
+             res.send(`Producto eliminado  ${result}`);  
+        } 
+    });
+});
 
+app.put('/api/products/ofertar/:id',async function (req,res){
+    let ofertador2=req.user_id;
+    id=req.params.id;
+    Users.findById(req.user_id,function(err, result) {
+        if (result==null){
+            res.statusCode =400;
+            res.send("Error de usuario");
+        }else{
+            Products.findByIdAndUpdate(id,{ofertador:ofertador2,},{new:true},function(err, result){
+                if (result==null){
+                    res.statusCode =400;
+                    res.send("No se ha podido editar");
+                }
+                 else{
+                     res.statusCode=200;
+                     res.send(result);  
+                }  
+            });
+        }
+    });
 });
 
 app.get('/api/users/:email',function (req,res) {
@@ -235,7 +280,7 @@ app.put('/api/preguntas/:id', function (req,res){
              res.statusCode=200;
              res.send(result);  
         }  
-    })
+    });
 });
 
 app.delete('/api/preguntas/:id',function (req,res){
