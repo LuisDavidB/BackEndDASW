@@ -127,7 +127,6 @@ app.get('/api/preguntas',function (req,res){
 app.use(authMiddleware);
 
 app.get('/api/users', (req, res) => {
-    //response.set('Access-Control-Allow-Origin', '*');
     Users.find()
     .then(users => {
         res.statusCode = 200;
