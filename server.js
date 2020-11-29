@@ -208,8 +208,10 @@ app.post('/api/preguntas',function (req,res){
 
 app.put('/api/preguntas/:id',async function (req,res){
     let newpregunta=req.body;
+    id=req.params.id;
+    pregunta2=newpregunta.pregunta
     console.log(req.params.id);
-    Preguntas.findByIdAndUpdate({_id:req.params.id},{pregunta:newpregunta.pregunta},{new:true},function(err, result){
+    Preguntas.findByIdAndUpdate(id,pregunta2,{new:true},function(err, result){
         if (result==null){
             res.statusCode =400;
             res.send("No se ha podido editar");
