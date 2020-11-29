@@ -122,9 +122,9 @@ app.post('/api/products',async function (req,res){
             res.statusCode =400;
             res.send("Error de usuario");
         }else{
-            req.body.user_apellido=ape;
+            req.body.user_apellido=result.apellido;
             let newProduct = Products(req.body);
-            res.send(result.apellido);
+            res.send(req.body);
             /*newProduct.save()
                 .then(product=>{
                     res.statusCode =201;
