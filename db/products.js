@@ -27,7 +27,6 @@ let productsSchema = mongoose.Schema({
     },
     url: {
         type: String,
-        required: true
     },
     user_id:{
         type:String,
@@ -43,7 +42,6 @@ let productsSchema = mongoose.Schema({
     },
     ofertador:{
         type:String,
-        required:true
     }
 });
 

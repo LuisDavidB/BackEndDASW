@@ -139,7 +139,8 @@ app.post('/api/products',async function (req,res){
             req.body.user_apellido=result.apellido;
             req.body.ofertador="";
             let newProduct = Products(req.body);
-            newProduct.save()
+            res.send(newProduct);
+            /*newProduct.save()
                 .then(product=>{
                     res.statusCode =201;
                     res.send(product);
@@ -147,7 +148,7 @@ app.post('/api/products',async function (req,res){
                 .catch(reason=>{
                     res.statusCode=500;
                     res.send();
-                });
+                });*/
         }
     });
 });
