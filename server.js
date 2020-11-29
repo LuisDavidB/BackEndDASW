@@ -187,7 +187,7 @@ app.put('/api/products/ofertar/:id',async function (req,res){
     let ofertador2=req.user_id;
     id=req.params.id;
     res.send(ofertador2)
-    /*Users.findById(req.user_id,function(err, result) {
+    Users.findById(req.user_id,function(err, result) {
         if (result==null){
             res.statusCode =400;
             res.send("Error de usuario");
@@ -203,7 +203,7 @@ app.put('/api/products/ofertar/:id',async function (req,res){
                 }  
             });
         }
-    });*/
+    });
 });
 
 app.get('/api/users/:email',function (req,res) {
