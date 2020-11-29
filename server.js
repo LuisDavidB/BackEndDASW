@@ -181,23 +181,18 @@ app.delete('/api/users/:email', function (req,res) {
     });
 });
 
-app.get('/api/preguntas',function (req,res){
-    let newpregunta ={
-        'pregunta':'hola',
-        'respuesta':'jeje'
-    }
-    let userDocument = Preguntas(newpregunta);
-    userDocument.save()
-    /*let newQuestion = Preguntas(req.body);
-    newQuestion.save()
-        .then(question=>{
-            res.statusCode =201;
-            res.send(question);
-        })
-        .catch(reason=>{
-            res.statusCode=500;
-            res.end();
-        });*/
+app.post('/api/preguntas',function (req,res){
+    let newpregunta =req.body;
+    let preguntaDocument = Preguntas(newpregunta);
+    preguntaDocument.save()
+    .then(question=>{
+        res.statusCode=200;
+        res.send(question);
+    })
+    .catch(err=>{
+        res.statusCode=500;
+        res.send("Error al guardar pregunta");
+    })
 });
 
 
