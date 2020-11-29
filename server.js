@@ -113,7 +113,7 @@ app.get('/api/products', (req, res) => {
     });
 });
 
-app.post('/api/products',(req,res)=>{
+app.post('/api/products',async function (req,res){
     req.body.user_id = req.user_id;
     req.body.user_nombre=req.user_nombre;
     Users.findById(id,function(err, result) {
