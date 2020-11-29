@@ -10,6 +10,7 @@ const cors = require('cors')
 const jwt = require('jsonwebtoken');
 const Users = require('./db/users');
 const  Products = require('./db/products');
+const Preguntas = require ('./db/Preguntas');
 const bcrypt = require('bcrypt');
 const { error } = require('console');
 
@@ -180,6 +181,18 @@ app.delete('/api/users/:email', function (req,res) {
     });
 });
 
+app.post('/api/preguntas',function (req,res){
+    let newQuestion = Preguntas(req.body);
+    newQuestion.save()
+        .then(question=>{
+            res.statusCode =201;
+            res.send(question);
+        })
+        .catch(reason=>{
+            res.statusCode=500;
+            res.end();
+        });
+});
 
 
 
