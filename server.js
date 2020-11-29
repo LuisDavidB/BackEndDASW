@@ -266,7 +266,7 @@ async function authMiddleware(req, res, next) {
                 res.end();
             }
             else {
-                req.nombre = decoded.nombre;
+                req.user_nombre = decoded.nombre;
                 req.user_id = decoded.id;
                 next();
             }
