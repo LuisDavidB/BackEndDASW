@@ -186,6 +186,7 @@ app.delete('/api/products/:id',(req,res)=>{
 app.put('/api/products/ofertar/:id',async function (req,res){
     //let idusuario=req.body;
     id=req.params.id;
+    res.statusCode=202;
     res.send(/*idusuario + " " + */req.user_id);
     /*if (idusuario==req.user_id){
         res.statusCode=400;
