@@ -86,21 +86,6 @@ app.post('/api/login', async function (req, res) {
       });
 });
 
-app.use(authMiddleware);
-
-app.get('/api/users', (req, res) => {
-    //response.set('Access-Control-Allow-Origin', '*');
-    Users.find()
-    .then(users => {
-        res.statusCode = 200;
-        res.send(users);
-    })
-    .catch(reason => {
-        res.statusCode = 500;
-        res.end();
-    });
-});
-
 app.get('/api/products', (req, res) => {
     Products.find()
     .then(products => {
@@ -126,6 +111,22 @@ app.get('/api/products/:id',function (req,res) {
         }
       });
 });
+
+app.use(authMiddleware);
+
+app.get('/api/users', (req, res) => {
+    //response.set('Access-Control-Allow-Origin', '*');
+    Users.find()
+    .then(users => {
+        res.statusCode = 200;
+        res.send(users);
+    })
+    .catch(reason => {
+        res.statusCode = 500;
+        res.end();
+    });
+});
+
 
 app.post('/api/products',async function (req,res){
     req.body.user_id = req.user_id;
