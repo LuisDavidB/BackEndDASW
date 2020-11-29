@@ -184,27 +184,32 @@ app.delete('/api/products/:id',(req,res)=>{
 });
 
 app.put('/api/products/ofertar/:id',async function (req,res){
-    let ofertador2=req.user_id;
+    let idusuario=req.body;
     id=req.params.id;
-    Users.findById(req.user_id,function(err, usuario) {
-        if (usuario==null){
-            res.statusCode =400;
-            res.send("Error de usuario");
-        }else{
-            let user_apellido=usuario.apellido;
-            let nombre_ofertador=req.user_nombre+""+user_apellido
-            Products.findByIdAndUpdate(id,{ofertador:nombre_ofertador},{new:true},function(err, result){
-                if (result==null){
-                    res.statusCode =400;
-                    res.send("No se ha podido ofertar");
-                }
-                 else{
-                     res.statusCode=200;
-                     res.send(result);  
-                }  
-            });
-        }
-    });
+    if (idusuario==req.user_id){
+        res.statusCode=200;
+        res.send("No pudes ofertar por tu articulo");
+    }else {
+        Users.findById(req.user_id,function(err, usuario) {
+            if (usuario==null){
+                res.statusCode =400;
+                res.send("Error de usuario");
+            }else{
+                let user_apellido=usuario.apellido;
+                let nombre_ofertador=req.user_nombre+" "+user_apellido
+                Products.findByIdAndUpdate(id,{ofertador:nombre_ofertador},{new:true},function(err, result){
+                    if (result==null){
+                        res.statusCode =400;
+                        res.send("No se ha podido ofertar");
+                    }
+                     else{
+                         res.statusCode=200;
+                         res.send(result);  
+                    }  
+                });
+            }
+        });
+    }
 });
 
 app.get('/api/users/:email',function (req,res) {
