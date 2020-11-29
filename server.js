@@ -186,7 +186,8 @@ app.delete('/api/products/:id',(req,res)=>{
 app.put('/api/products/ofertar/:id',async function (req,res){
     let ofertador2=req.user_id;
     id=req.params.id;
-    Users.findById(req.user_id,function(err, result) {
+    res.send(ofertador2)
+    /*Users.findById(req.user_id,function(err, result) {
         if (result==null){
             res.statusCode =400;
             res.send("Error de usuario");
@@ -194,7 +195,7 @@ app.put('/api/products/ofertar/:id',async function (req,res){
             Products.findByIdAndUpdate(id,{ofertador:ofertador2,},{new:true},function(err, result){
                 if (result==null){
                     res.statusCode =400;
-                    res.send("No se ha podido editar");
+                    res.send("No se ha podido ofertar");
                 }
                  else{
                      res.statusCode=200;
@@ -202,7 +203,7 @@ app.put('/api/products/ofertar/:id',async function (req,res){
                 }  
             });
         }
-    });
+    });*/
 });
 
 app.get('/api/users/:email',function (req,res) {
