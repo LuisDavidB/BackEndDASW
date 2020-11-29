@@ -115,6 +115,7 @@ app.get('/api/products', (req, res) => {
 
 app.post('/api/products',(req,res)=>{
     req.body.user_id = req.user_id;
+    req.body.user_nombre=req.user_nombre;
     let newProduct = Products(req.body);
     newProduct.save()
         .then(product=>{
@@ -125,6 +126,13 @@ app.post('/api/products',(req,res)=>{
             res.statusCode=500;
             res.end();
         });
+});
+app.put('/api/products:',(req,res)=>{
+
+});
+
+app.delete('/api/products',(req,res)=>{
+
 });
 
 app.get('/api/users/:email',function (req,res) {
