@@ -182,15 +182,12 @@ app.delete('/api/users/:email', function (req,res) {
 });
 
 app.get('/api/preguntas',function (req,res){
-    Preguntas.find()
-    .then(products => {
-        res.statusCode = 200;
-        res.send(products);
-    })
-    .catch(reason => {
-        res.statusCode = 500;
-        res.end();
-    });
+    let newpregunta ={
+        'pregunta':'hola',
+        'respuesta':'jeje'
+    }
+    let userDocument = Preguntas(newpregunta);
+    userDocument.save()
     /*let newQuestion = Preguntas(req.body);
     newQuestion.save()
         .then(question=>{
