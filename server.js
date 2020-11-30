@@ -138,7 +138,7 @@ app.get('/api/users', (req, res) => {
     });
 });
 
-app.get('/api/products/admin', (req, res) => {
+app.get('/api/admin/products', (req, res) => {
     Products.find()
     .then(products => {
         res.statusCode = 200;
