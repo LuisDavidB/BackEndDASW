@@ -332,7 +332,7 @@ app.delete('/api/preguntas/:id',function (req,res){
     });
 });
 
-app.get('api/UsuarioLoggeado', (req,res) =>{
+app.get('/api/UsuarioLoggeado', (req,res) =>{
     Users.findById(req.user_id, function (err,result){
         if (result==null){
             res.statusCode=400;
