@@ -332,6 +332,19 @@ app.delete('/api/preguntas/:id',function (req,res){
     });
 });
 
+app.get('api/UsuarioLoggeado', (req,res) =>{
+    Users.findById(req.user_id, function (err,result){
+        if (result==null){
+            res.statusCode=400;
+            res.send("Error al obtener usuario")  
+        }else {
+            res.statusCode=200;
+            res.send(result);
+        }
+    })
+});
+
+
 
 app.get('/api/misproducts', (req, res) => {
     Products.find({user_id:req.user_id}, function (err,result){
