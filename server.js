@@ -378,7 +378,7 @@ async function authMiddleware(req, res, next) {
         jwt.verify(token, 'secret', (err, decoded) => {
             if (err) {
                 res.statusCode = 401;
-                res.end("No tienes autorizacion");
+                res.send("No tienes autorizacion");
             }
             else {
                 req.user_nombre = decoded.nombre;
